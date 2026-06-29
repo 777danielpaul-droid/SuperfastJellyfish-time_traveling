@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Die wissenschaftlichen Grundlagen von Superfast Jellyfish - Wie die Erforschung von Zeitquallen das Reisen im Chrono-Medium ermöglicht."
+    />
+    <title>Superfast Jellyfish - Science & Temporal Biology</title>
+    <style>
+      :root {
+        --neon-cyan: #00f3ff;
+        --neon-pink: #ff0055;
+        --dark-void: #0a0a12;
+        --grid-line: rgba(0, 243, 255, 0.1);
+        --text-gray: #a0aec0;
+        --text-light: #e2e8f0;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--dark-void);
+        background-image:
+          linear-gradient(var(--grid-line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+        background-size: 30px 30px;
+        color: var(--text-light);
+        overflow-x: hidden;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+      }
+
+      .main-header {
+        background-color: rgba(10, 10, 18, 0.85);
+        backdrop-filter: blur(10px);
+        border-bottom: 2px solid var(--neon-cyan);
+        box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+        padding: 30px 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .logo {
+        color: #fff;
+        text-shadow:
+          0 0 15px var(--neon-cyan),
+          0 0 30px var(--neon-cyan);
+        font-family: "Courier New", monospace;
+        letter-spacing: 6px;
+        font-size: 2.5rem;
+        font-weight: 900;
+        text-align: center;
+      }
+
+      .nav-bar {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .nav-bar a {
+        position: relative;
+        font-family: "Courier New", monospace;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 1rem;
+        transition:
+          color 0.3s,
+          text-shadow 0.3s;
+        margin: 5px 15px;
+        text-decoration: none;
+        color: #fff;
+      }
+
+      .nav-bar a:hover {
+        color: var(--neon-pink);
+        text-shadow: 0 0 8px var(--neon-pink);
+      }
+      .container {
+        max-width: 1100px;
+        margin: 60px auto;
+        padding: 0 20px;
+      }
+      .main-title {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: #fff;
+        text-shadow: 0 0 15px var(--neon-cyan);
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .subtitle {
+        text-align: center;
+        color: var(--text-gray);
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        margin-bottom: 60px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .science-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        margin-top: 40px;
+      }
+
+      .science-article {
+        background: rgba(20, 20, 35, 0.7);
+        border: 1px solid rgba(0, 243, 255, 0.2);
+        padding: 35px 25px;
+        position: relative;
+        box-shadow: 0 0 15px rgba(0, 243, 255, 0.05);
+      }
+
+      .science-article::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(180deg, var(--neon-cyan), var(--neon-pink));
+      }
+
+      .science-article h2 {
+        color: #fff;
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        text-shadow: 0 0 8px var(--neon-pink);
+      }
+      .science-article p {
+        color: var(--text-light);
+        font-size: 1rem;
+        margin-bottom: 15px;
+      }
+      .theory-blockquote {
+        background: rgba(0, 243, 255, 0.05);
+        border: 1px dashed var(--neon-cyan);
+        padding: 30px;
+        margin: 50px 0;
+        text-align: center;
+        font-style: italic;
+        font-size: 1.2rem;
+        text-shadow: 0 0 5px rgba(0, 243, 255, 0.3);
+      }
+      .main-footer {
+        background-color: #05050a;
+        border-top: 2px solid var(--neon-pink);
+        padding: 50px 5%;
+        text-align: center;
+        margin-top: 100px;
+      }
+      .main-footer p {
+        color: #4a5568;
+        font-size: 0.85rem;
+      }
+
+      @media (max-width: 768px) {
+        .logo {
+          font-size: 1.8rem;
+          letter-spacing: 3px;
+        }
+        .container {
+          margin: 30px auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="logo" role="banner">SUPERFAST JELLYFISH</div>
+      <nav class="nav-bar" aria-label="Hauptnavigation">
+        <a href="index.html#home">Home</a>
+        <a href="science.html">Science</a>
+        <a href="qualle.html">Spaceship</a>
+        <a href="index.html#ages">Ages</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <h1 class="main-title">CHRONO-BIOLOGISCHE CHARTA</h1>
+      <p class="subtitle">
+        Die fundamentale Entdeckung unserer Ära: Zeitreisen sind kein
+        mathematisches Konstrukt aus Drähten und Reaktoren – sie sind ein
+        biologischer Urzustand.
+      </p>
+
+      <section aria-label="Wissenschaftliche Abhandlungen">
+        <div class="science-grid">
+          <article class="science-article">
+            <h2>Die Entdeckung der Instinkte</h2>
+            <p>
+              Wissenschaftler haben herausgefunden, dass bestimmte marine
+              Nesseltiere nicht an eine lineare Dimension gebunden sind. In
+              unserer Realität schwimmen Quallen instinktiv durch Risse in der
+              temporalen Strömung, um Fressfeinden oder Umweltkatastrophen zu
+              entgehen.
+            </p>
+          </article>
+
+          <article class="science-article">
+            <h2>Biotechnologische Zucht</h2>
+            <p>
+              Durch den gezielten Einsatz von Genom-Spleißung und kybernetischen
+              Nährstoffbädern ist es der Superfast Jellyfish Corp. gelungen,
+              diese mikroskopischen temporalen Fähigkeiten zu skalieren.
+            </p>
+          </article>
+        </div>
+
+        <div class="theory-blockquote">
+          "Wir bauen keine Maschinen, um die Zeit zu bezwingen. Wir züchten
+          Gefährten, die uns erlauben, mit ihnen durch die Gezeiten der
+          Jahrhunderte zu gleiten."
+        </div>
+
+        <div class="science-grid">
+          <article class="science-article">
+            <h2>Das Chrono-Medium vs. Das Meer</h2>
+            <p>
+              Der entscheidende Paradigmenwechsel liegt im Verständnis der
+              Fortbewegung. Raketen erzeugen Rückstoß im Vakuum. Die Zeitqualle
+              nutzt Chrono-Hydrodynamik.
+            </p>
+          </article>
+
+          <article class="science-article">
+            <h2>Das biologische Sicherheitsfeld</h2>
+            <p>
+              Da die Hülle vollständig organisch ist, erzeugt sie während des
+              Kontraktionsschlags ein körpereigenes bio-elektrisches Feld.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <p>
+        &copy; 2026 Superfast Jellyfish Corp. | Abteilung für theoretische
+        Xenobiologie.
+      </p>
+    </footer>
+  </body>
+</html>
