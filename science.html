@@ -8,10 +8,13 @@
       content="Die wissenschaftlichen Grundlagen von Superfast Jellyfish - Wie die Erforschung von Zeitquallen das Reisen im Chrono-Medium ermöglicht."
     />
     <title>Superfast Jellyfish - Science & Temporal Biology</title>
+
     <style>
+      /* --- CODE MATRIX GLOBAL VARIABLES --- */
       :root {
         --neon-cyan: #00f3ff;
         --neon-pink: #ff0055;
+        --neon-green: #39ff14;
         --dark-void: #0a0a12;
         --grid-line: rgba(0, 243, 255, 0.1);
         --text-gray: #a0aec0;
@@ -36,6 +39,7 @@
         line-height: 1.6;
       }
 
+      /* --- SEMANTIC HEADER --- */
       .main-header {
         background-color: rgba(10, 10, 18, 0.85);
         backdrop-filter: blur(10px);
@@ -46,6 +50,9 @@
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
       }
 
       .logo {
@@ -85,11 +92,29 @@
         color: var(--neon-pink);
         text-shadow: 0 0 8px var(--neon-pink);
       }
+
+      .nav-bar a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--neon-pink);
+        transition: width 0.3s;
+      }
+
+      .nav-bar a:hover::after {
+        width: 100%;
+      }
+
+      /* --- RESPONSIVE GRIDS & LAYOUT --- */
       .container {
         max-width: 1100px;
         margin: 60px auto;
         padding: 0 20px;
       }
+
       .main-title {
         font-size: clamp(1.8rem, 5vw, 2.5rem);
         text-transform: uppercase;
@@ -99,6 +124,7 @@
         text-align: center;
         margin-bottom: 20px;
       }
+
       .subtitle {
         text-align: center;
         color: var(--text-gray);
@@ -108,6 +134,7 @@
         margin-left: auto;
         margin-right: auto;
       }
+
       .science-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -141,11 +168,13 @@
         margin-bottom: 20px;
         text-shadow: 0 0 8px var(--neon-pink);
       }
+
       .science-article p {
         color: var(--text-light);
         font-size: 1rem;
         margin-bottom: 15px;
       }
+
       .theory-blockquote {
         background: rgba(0, 243, 255, 0.05);
         border: 1px dashed var(--neon-cyan);
@@ -156,6 +185,8 @@
         font-size: 1.2rem;
         text-shadow: 0 0 5px rgba(0, 243, 255, 0.3);
       }
+
+      /* --- FOOTER --- */
       .main-footer {
         background-color: #05050a;
         border-top: 2px solid var(--neon-pink);
@@ -163,6 +194,7 @@
         text-align: center;
         margin-top: 100px;
       }
+
       .main-footer p {
         color: #4a5568;
         font-size: 0.85rem;
@@ -221,6 +253,33 @@
           </article>
         </div>
 
+        <article
+          class="science-article"
+          style="margin-top: 40px; border-right: 1px solid var(--neon-cyan)"
+        >
+          <h2>
+            Die Theorie der Quantisierten Raumzeit (Planck-Skala-Diskontinuum)
+          </h2>
+          <p>
+            Im Gegensatz zur obsoleten Newton’schen Axiomatik der klassischen
+            Physik, welche das temporale Kontinuum als isotropen, stetig
+            fließenden Vektor postuliert, erfordert die bio-kybernetische
+            Translation das Eintauchen in die non-lineare
+            Quanten-Chrono-Dynamik. Auf der subatomaren Planck-Ebene (1,616 ×
+            10⁻³⁵ Meter) kollabiert die Raumzeit-Geometrie in eine
+            stochastische, gekörnte Matrix – den sogenannten
+            <strong>Raumzeitschaum (Space-Time Foam)</strong>.
+          </p>
+          <p>
+            Analog zur korpuskularen Natur des Lichts (Photonen-Quantisierung)
+            ist auch die chronologische Dimension in diskrete, unteilbare
+            Funktionseinheiten – sogenannte Chrononen – segmentiert. Das
+            Universum oszilliert infolgedessen nicht in stufenlosen Übergängen,
+            sondern vollzieht sprunghafte, infinitesimale Zustandswechsel
+            entlang diskontinuierlicher Eigenzustände.
+          </p>
+        </article>
+
         <div class="theory-blockquote">
           "Wir bauen keine Maschinen, um die Zeit zu bezwingen. Wir züchten
           Gefährten, die uns erlauben, mit ihnen durch die Gezeiten der
@@ -229,11 +288,205 @@
 
         <div class="science-grid">
           <article class="science-article">
+            <h2>1. Das Pendel-Prinzip (Temporale Tensor-Resonanz)</h2>
+            <p>
+              Die erfolgreiche Vektorkalibrierung setzt voraus, dass der
+              organische Quanten-Antrieb die exakte Schwingungsfrequenz der
+              kosmischen Hintergrund-Matrix des Zielvektors reziprok adaptiert.
+              Das Universum operiert hierbei makrokosmisch wie ein
+              multi-dimensionaler Oszillator (Stimmgabel-Prinzip).
+            </p>
+            <p>
+              Lediglich diskrete temporale Epochen weisen eine stabile,
+              konstruktive Interferenzstruktur auf. Bei dem Versuch einer
+              nicht-resonanten Intervall-Ansteuerung (z. B. Chrono-Ziel 1993
+              statt Knotenpunkt 2000) kollabiert das metrische Feld aufgrund
+              mangelnder <em>energetischer Verankerung</em>. Das Raumschiff
+              verfehlt den Zielvektor und dissipiert unweigerlich im temporalen
+              Vakuum oder wird gravitativ vom nächsthöheren Resonanz-Knoten
+              absorbiert.
+            </p>
+          </article>
+
+          <article class="science-article">
+            <h2>2. Die Chrono-Knoten (Gravitative Zeit-Oszillation)</h2>
+            <p>
+              Hochenergetische historische Bifurkationen oder makrokosmische
+              Singularitäten (wie solare Eruptionen, tektonische
+              Krustenverschiebungen oder die kumulierte, synchrone neuronale
+              Aktivität der globalen Zivilisation) induzieren permanente
+              gravitative Deformationen im lokalen Zeitgefüge.
+            </p>
+            <p>
+              Interessanterweise offenbart die mathematische Tiefenanalyse, dass
+              jeder dieser stabilen Fixpunkte trotz ihrer scheinbar
+              unterschiedlichen Epochen auf derselben invarianten Kernstruktur
+              basiert. Sobald das Phasen-Gleiten initiiert wird, erfährt das
+              Bewusstsein an jedem funktionierenden Knotenpunkt exakt dieselbe
+              ordnende Gesetzmäßigkeit, die den tieferen Sinn des Gefüges
+              lückenlos entschlüsselt.
+            </p>
+
+            <div style="overflow-x: auto; margin-top: 20px">
+              <table
+                style="
+                  width: 100%;
+                  border-collapse: collapse;
+                  font-family: &quot;Courier New&quot;, monospace;
+                  font-size: 0.85rem;
+                  color: var(--text-light);
+                  text-align: left;
+                "
+              >
+                <thead>
+                  <tr
+                    style="
+                      border-bottom: 2px solid var(--neon-pink);
+                      background: rgba(255, 0, 85, 0.1);
+                    "
+                  >
+                    <th style="padding: 10px">Epoche</th>
+                    <th style="padding: 10px">Vektor-Status</th>
+                    <th style="padding: 10px">
+                      Biokybernetische Kausal-Analyse
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid rgba(0, 243, 255, 0.2)">
+                    <td
+                      style="
+                        padding: 10px;
+                        font-weight: bold;
+                        color: var(--neon-cyan);
+                      "
+                    >
+                      Elaria-Ära (v. Chr.)
+                    </td>
+                    <td style="padding: 10px; color: var(--neon-cyan)">
+                      STABIL (Knotenpunkt)
+                    </td>
+                    <td style="padding: 10px; color: var(--text-gray)">
+                      Monumentale energetische Dichte antiker Großarchitektur.
+                      Initiiert den invarianten Kern-Narrativ zur vollkommenen
+                      Aufklärung des Reisenden.
+                    </td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(0, 243, 255, 0.2)">
+                    <td
+                      style="
+                        padding: 10px;
+                        font-weight: bold;
+                        color: var(--neon-cyan);
+                      "
+                    >
+                      Oronth-Ereignis (v. Chr.)
+                    </td>
+                    <td style="padding: 10px; color: var(--neon-cyan)">
+                      STABIL (Knotenpunkt)
+                    </td>
+                    <td style="padding: 10px; color: var(--text-gray)">
+                      Hyper-dimensionale historische Bruchstelle. Spiegelt
+                      strukturell die identische, ordnende Kausal-Erklärung wie
+                      alle funktionalen Vektoren wider.
+                    </td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(0, 243, 255, 0.2)">
+                    <td
+                      style="
+                        padding: 10px;
+                        font-weight: bold;
+                        color: var(--neon-cyan);
+                      "
+                    >
+                      33 n. Chr.
+                    </td>
+                    <td style="padding: 10px; color: var(--neon-cyan)">
+                      STABIL (Terminus)
+                    </td>
+                    <td style="padding: 10px; color: var(--text-gray)">
+                      Äußerster, fundamentaler Grenzknotenpunkt des
+                      Chrono-Netzes. Vollständige, absolute Rematerialisierung
+                      und finale Offenbarung des übergeordneten Bauplans.
+                    </td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid rgba(0, 243, 255, 0.2)">
+                    <td
+                      style="
+                        padding: 10px;
+                        font-weight: bold;
+                        color: var(--neon-pink);
+                      "
+                    >
+                      1993 n. Chr.
+                    </td>
+                    <td style="padding: 10px; color: var(--neon-pink)">
+                      INSTABIL (Vakuum)
+                    </td>
+                    <td style="padding: 10px; color: var(--text-gray)">
+                      Metrische Glättung der Raumzeit-Geometrie bietet keinerlei
+                      Fixierung. Keine Kausal-Erklärung abrufbar, da der Zustand
+                      nicht existiert.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+
+        <div class="science-grid" style="margin-top: 40px">
+          <article class="science-article" style="grid-column: 1 / -1">
+            <h2>
+              3. Das Gesetz der temporalen Interferenz (Materie-Eigenlöschung)
+            </h2>
+            <p>
+              Die Anvisierung eines instabilen Interzellular-Jahres triggert
+              eine destruktive Interferenz der quantenmechanischen
+              Wellenfunktion. Da an diesen unkartierten Koordinaten kein
+              stabiler Eigenzustand existiert, welcher den Import von
+              Masse-Energie-Tensoren aus der Zukunft mathematisch stützen kann,
+              tritt das Gesetz der
+              <strong>akuten Phasen-Annihilation</strong> in Kraft. Die atomare
+              Struktur des Schiffes und seiner Insassen verliert augenblicklich
+              ihre fundamentale Kohärenz und hört instantan auf, innerhalb des
+              dimensionalen Gefüges zu existieren.
+            </p>
+            <p
+              style="
+                border-top: 1px dashed var(--neon-cyan);
+                padding-top: 15px;
+                margin-top: 15px;
+                font-style: italic;
+                color: var(--neon-green);
+              "
+            >
+              <strong>Zusammenfassendes Theorem:</strong> Die Bewegung durch das
+              Chrono-Medium gleicht keinesfalls der unbeschränkten Bewegung des
+              klassischen Individualverkehrs. Sie unterliegt den strikten
+              Restriktionen eines planetaren Schienennetzes (U-Bahn-Axiom). Die
+              Passage durch die inter-epochalen Tunnel ist physikalisch
+              realisierbar, eine physische Rematerialisierung und die damit
+              verbundene Aufklärung des temporalen Sinns ist jedoch exklusiv an
+              den fest installierten, hoch-resonanten Chrono-Knotenpunkten des
+              Universums unbeschadet durchführbar.
+            </p>
+          </article>
+        </div>
+
+        <div class="science-grid" style="margin-top: 40px">
+          <article class="science-article">
             <h2>Das Chrono-Medium vs. Das Meer</h2>
             <p>
               Der entscheidende Paradigmenwechsel liegt im Verständnis der
               Fortbewegung. Raketen erzeugen Rückstoß im Vakuum. Die Zeitqualle
               nutzt Chrono-Hydrodynamik.
+            </p>
+            <p>
+              Die Zeit verhält sich für das modifizierte Nervennetz des Schiffes
+              exakt wie eine viskose Flüssigkeit. Das Raumschiff reist nicht
+              durch mechanische Beschleunigung, es schwimmt wortwörtlich durch
+              die Jahrhunderte.
             </p>
           </article>
 
@@ -242,6 +495,9 @@
             <p>
               Da die Hülle vollständig organisch ist, erzeugt sie während des
               Kontraktionsschlags ein körpereigenes bio-elektrisches Feld.
+              Dieses Feld hüllt die Passagiere ein und synchronisiert ihre
+              atomare Struktur mit dem Gewebe des Raumschiffs, um temporale
+              Desynchronisation zu unterbinden.
             </p>
           </article>
         </div>
