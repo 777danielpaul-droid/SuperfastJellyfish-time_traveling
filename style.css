@@ -413,3 +413,145 @@ body {
     padding: 50px 3%;
   }
 }
+/* ==========================================================================
+   9. EXTRA STYLES FOR SCIENCE GRID & CARD EFFECTS
+   ========================================================================== */
+.container {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.science-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.grid-margin-top {
+  margin-top: 40px;
+}
+
+/* --- THE CARD HOVER & MAGNIFY EFFECT --- */
+.science-article {
+  background: rgba(20, 20, 35, 0.7);
+  border: 1px solid var(--neon-cyan);
+  padding: 35px 25px;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.05);
+  transform: scale(1);
+  z-index: 1;
+  transition:
+    transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.science-article::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+}
+
+/* 1.2 Lupeneffekt */
+.science-article:hover {
+  transform: scale(1.2) !important;
+  z-index: 20;
+  border-color: var(--neon-pink);
+  box-shadow: 0 20px 40px rgba(255, 0, 85, 0.6);
+}
+
+.science-article h2 {
+  color: #fff;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.science-article p {
+  color: var(--text-gray);
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.science-main-theory {
+  margin-top: 40px;
+}
+
+.article-full-width {
+  grid-column: 1 / -1;
+}
+
+/* --- BLOCKQUOTE & THEOREM --- */
+.theory-blockquote {
+  background: rgba(0, 243, 255, 0.05);
+  border: 1px dashed var(--neon-cyan);
+  padding: 30px;
+  margin: 50px 0;
+  text-align: center;
+  font-style: italic;
+  font-size: 1.2rem;
+  text-shadow: 0 0 5px rgba(0, 243, 255, 0.3);
+}
+
+.summary-theorem {
+  border-top: 1px dashed var(--neon-cyan);
+  padding-top: 15px;
+  margin-top: 15px;
+  font-style: italic;
+  color: var(--neon-green);
+}
+
+/* --- CHRONO MATRIX DATA TABLE --- */
+.table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.chrono-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Courier New", monospace;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  text-align: left;
+}
+
+.chrono-table th {
+  padding: 10px;
+  border-bottom: 2px solid var(--neon-pink);
+  background: rgba(255, 0, 85, 0.1);
+}
+
+.chrono-table td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+}
+
+.status-stable-label {
+  font-weight: bold;
+  color: var(--neon-cyan);
+}
+
+.status-stable-text {
+  color: var(--neon-cyan);
+}
+
+.status-unstable-label {
+  font-weight: bold;
+  color: var(--neon-pink);
+}
+
+.status-unstable-text {
+  color: var(--neon-pink);
+}
+
+.table-desc {
+  color: var(--text-gray);
+}
