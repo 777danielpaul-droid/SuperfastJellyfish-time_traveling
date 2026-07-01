@@ -26,7 +26,7 @@ body {
   color: var(--text-light);
   overflow-x: hidden;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 /* ==========================================================================
@@ -37,11 +37,11 @@ body {
   backdrop-filter: blur(10px);
   border-bottom: 2px solid var(--neon-cyan);
   box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
-  padding: 30px 5%;
+  padding: 20px 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -53,8 +53,8 @@ body {
     0 0 15px var(--neon-cyan),
     0 0 30px var(--neon-cyan);
   font-family: "Courier New", monospace;
-  letter-spacing: 6px;
-  font-size: 2.5rem;
+  letter-spacing: 4px;
+  font-size: 2rem;
   font-weight: 900;
   text-align: center;
 }
@@ -63,7 +63,7 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
 }
 
 .nav-bar a {
@@ -71,11 +71,11 @@ body {
   font-family: "Courier New", monospace;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   transition:
     color 0.3s,
     text-shadow 0.3s;
-  margin: 5px 15px;
+  margin: 5px 12px;
   text-decoration: none;
   color: #fff;
   z-index: 10;
@@ -108,7 +108,7 @@ body {
   background:
     linear-gradient(rgba(10, 10, 18, 0.5), rgba(10, 10, 18, 0.9)),
     url("spaceship.png") no-repeat center center/cover;
-  min-height: 65vh;
+  min-height: 50vh;
   border-bottom: 1px solid rgba(255, 0, 85, 0.3);
   position: relative;
   display: flex;
@@ -131,13 +131,13 @@ body {
 }
 
 .hero h1 {
-  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   color: #fff;
   text-shadow: 0 0 15px var(--neon-cyan);
-  margin-bottom: 30px;
-  max-width: 900px;
+  margin-bottom: 25px;
+  max-width: 800px;
   z-index: 1;
 }
 
@@ -150,10 +150,11 @@ body {
   box-shadow:
     0 0 10px rgba(0, 243, 255, 0.2),
     inset 0 0 10px rgba(0, 243, 255, 0.2);
-  padding: 15px 40px;
+  padding: 12px 30px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
+  font-size: 0.9rem;
   transition: all 0.4s ease;
   text-decoration: none;
   display: inline-block;
@@ -173,342 +174,331 @@ body {
 /* ==========================================================================
    4. LAYOUT GRIDS
    ========================================================================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.main-title {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #fff;
+  text-shadow: 0 0 15px var(--neon-cyan);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
 .content-section {
-  padding: 80px 5%;
-  max-width: 1400px;
+  padding: 60px 20px;
+  max-width: 1200px;
   margin: 0 auto;
   text-align: center;
 }
 
 .section-title {
-  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
   text-transform: uppercase;
   letter-spacing: 3px;
   color: #fff;
   text-shadow: 0 0 10px var(--neon-pink);
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .card-container,
-.science-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-}
-
+.science-grid,
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 35px;
-  margin-top: 50px;
+  gap: 30px;
+  padding: 15px 0;
 }
 
 /* ==========================================================================
-   5. TEXTBOXEN & FORM-PANELS (ECHTER 1.2 LUPENEFFEKT MIT GRID-OVERRIDE)
+   5. HOVER-BOXEN & BILD-EFFEKTE (STRENG GETRENNT)
    ========================================================================== */
+
+/* --- BASIS-STYLING FÜR ALLE INTERAKTIVEN CONTAINER --- */
 .cyber-card,
 .science-article,
-.biotech-section,
-.calibration-form {
-  background: rgba(20, 20, 35, 0.7);
+.scan-container,
+.gallery-item {
+  background: rgba(12, 12, 25, 0.96);
   border: 1px solid var(--neon-cyan);
-  padding: 40px 30px;
+  padding: 20px !important; /* Absolut stabiles Padding für Textstrukturen */
   text-align: left;
   position: relative;
-  transform: scale(1);
+  overflow: hidden; /* Schneidet heraustretende Bildkanten sauber ab */
+  cursor: pointer;
+
+  transform: scale(1) translateZ(0);
   z-index: 1;
   transition:
-    transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
+    transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .cyber-card::before,
 .science-article::before,
-.biotech-section::before,
-.calibration-form::before {
+.gallery-item::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 4px;
+  height: 3px;
   background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+  z-index: 10;
 }
 
-/* Der gewollte 1.2er Zoom hebt das Element über Grid-Grenzen hinweg */
+/* --- HOVER-EFFEKT: BOX-ZOOM --- */
 .cyber-card:hover,
 .science-article:hover,
-.biotech-section:hover,
-.calibration-form:hover {
-  transform: scale(1.2) !important;
-  z-index: 20; /* Garantiert im Vordergrund */
-  border-color: var(--neon-pink);
-  box-shadow: 0 20px 40px rgba(255, 0, 85, 0.6);
-}
-
-.cyber-card h3,
-.science-article h2,
-.biotech-section h2,
-.calibration-form legend {
-  color: #fff;
-  margin-bottom: 15px;
-  font-size: 1.3rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.cyber-card p,
-.science-article p,
-.biotech-section p {
-  color: var(--text-gray);
-  font-size: 0.95rem;
-  margin-bottom: 15px;
-}
-
-.tech-fact {
-  background: rgba(10, 10, 20, 0.6);
-  border-left: 3px solid var(--neon-green);
-  padding: 15px;
-  margin-top: 15px;
-  font-family: "Courier New", monospace;
-  font-size: 0.9rem;
-  color: var(--text-light);
-  line-height: 1.5;
-}
-
-/* ==========================================================================
-   6. BILDER-GALERIE (INNEN-ZOOM AUF 1.2)
-   ========================================================================== */
-.gallery-item {
-  background: rgba(20, 20, 35, 0.7);
-  border: 1px solid rgba(0, 243, 255, 0.3);
-  padding: 15px;
-  position: relative;
-  z-index: 1;
-  cursor: pointer;
-  overflow: hidden;
-  transition:
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
-}
-
+.scan-container:hover,
 .gallery-item:hover {
+  transform: scale(1.1) translateZ(0);
+  z-index: 40;
   border-color: var(--neon-pink);
-  box-shadow: 0 15px 35px rgba(255, 0, 85, 0.4);
+  box-shadow: 0 15px 35px rgba(255, 0, 85, 0.45);
 }
 
+/* --- EFFEKT FÜR INDEX.HTML (GALLERY-ITEMS) --- */
 .gallery-item img {
   width: 100%;
   height: 180px;
   object-fit: cover;
   display: block;
-  border-bottom: 2px solid var(--neon-pink);
-  filter: hue-rotate(340deg) saturate(1.3);
-  transform: scale(1);
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 15px;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+  transition:
+    margin 0.25s ease,
+    width 0.25s ease,
+    height 0.25s ease;
 }
 
+/* Dehnt das Bild beim Hovern randlos aus */
 .gallery-item:hover img {
-  transform: scale(1.2);
+  margin-top: -20px !important;
+  margin-left: -20px !important;
+  margin-right: -20px !important;
+  width: calc(100% + 40px) !important;
+  height: 200px;
+  border-color: transparent;
 }
 
-.gallery-item figcaption {
-  margin-top: 15px;
-  font-weight: bold;
-  font-family: "Courier New", monospace;
-  letter-spacing: 1px;
-  color: #fff;
-  font-size: 0.9rem;
+/* --- EFFEKT FÜR AGES.HTML (SCIENCE-ARTICLES) --- */
+/* Korrigiert das inline-gestylte HTML-Figure-Tag auf ages.html */
+.science-article figure {
+  margin: 0 0 15px 0 !important; /* Überschreibt harte Inline-Margins */
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  overflow: visible !important;
+  transition:
+    margin 0.25s ease,
+    width 0.25s ease !important;
+}
+
+.science-article figure img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Zwingt das verschachtelte Figure-Tag beim Box-Hover, randlos zu werden */
+.science-article:hover figure {
+  margin-top: -20px !important;
+  margin-left: -20px !important;
+  margin-right: -20px !important;
+  margin-bottom: 15px !important;
+  width: calc(100% + 40px) !important;
 }
 
 /* ==========================================================================
-   7. FORMULARELEMENTE (TIME.HTML)
+   6. METADATEN, FORMULARE (TIME) & SPACESHIP FIX
    ========================================================================== */
-.input-group {
-  margin-bottom: 20px;
-}
-
-.input-group label {
+.scan-container {
   display: block;
-  font-family: "Courier New", monospace;
-  color: var(--neon-cyan);
-  margin-bottom: 8px;
+  margin-bottom: 30px;
 }
 
-.input-group input[type="text"],
-.input-group select {
+.scan-container::before {
+  content: "BIOMETRIC SCAN: SUBJECT J-01 ... ONLINE";
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  background: var(--dark-void);
+  color: var(--neon-green);
+  padding: 0 8px;
+  font-size: 0.75rem;
+  font-family: "Courier New", monospace;
+  z-index: 15;
+}
+
+/* Das Spaceship-Bild (qualle.html) bleibt stabil komplett sichtbar */
+.blueprint-img {
   width: 100%;
-  padding: 12px;
-  background: rgba(10, 10, 20, 0.8);
+  height: auto;
+  max-height: 350px;
+  object-fit: contain !important;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  margin-bottom: 15px;
+}
+
+/* Cyberpunk-Formular für time.html */
+.calibration-form {
+  background: rgba(12, 12, 25, 0.85);
   border: 1px solid var(--neon-cyan);
+  box-shadow: 0 0 25px rgba(0, 243, 255, 0.15);
+  padding: 30px;
+  margin: 30px auto;
+  max-width: 100%;
+  text-align: left;
+}
+
+.form-fieldset {
+  border: 1px solid rgba(255, 0, 85, 0.2) !important;
+  padding: 20px !important;
+  margin-bottom: 25px !important;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.form-legend {
+  color: var(--neon-pink);
+  font-family: "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+.calibration-form .input-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.calibration-form .input-group:last-child {
+  margin-bottom: 0;
+}
+
+.calibration-form label,
+.group-label {
+  display: block;
   color: #fff;
   font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.calibration-form select {
+  width: 100%;
+  background: var(--dark-void);
+  border: 1px solid var(--neon-cyan);
+  color: #fff;
+  padding: 12px;
+  font-size: 0.95rem;
+  outline: none;
+  font-family: "Segoe UI", sans-serif;
+  box-shadow: inset 0 0 5px rgba(0, 243, 255, 0.2);
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.calibration-form select:focus {
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 12px rgba(255, 0, 85, 0.4);
 }
 
 .checkbox-grid {
   display: grid;
-  gap: 10px;
-  margin-top: 5px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px;
+  margin-top: 10px;
 }
 
 .checkbox-label {
-  display: flex;
+  display: flex !important;
   align-items: center;
   gap: 10px;
-  font-family: "Courier New", monospace;
-  color: var(--text-gray);
+  color: var(--text-gray) !important;
+  text-transform: none !important;
+  font-family: "Segoe UI", sans-serif !important;
   cursor: pointer;
+  font-size: 0.9rem !important;
 }
 
-.launch-btn {
-  width: 100%;
-  margin-top: 20px;
+.checkbox-label input[type="checkbox"] {
+  accent-color: var(--neon-cyan);
+  width: 18px;
+  height: 18px;
 }
 
-/* ==========================================================================
-   8. FOOTER & RESPONSIVENESS
-   ========================================================================== */
-.main-footer {
-  background-color: #05050a;
-  border-top: 2px solid var(--neon-pink);
-  padding: 50px 5%;
-  text-align: center;
-  margin-top: 60px;
-}
-
-.footer-links {
-  margin-bottom: 25px;
-}
-
-.footer-links a {
-  color: var(--text-gray);
-  text-decoration: none;
-  margin: 5px 20px;
-  display: inline-block;
-  font-size: 0.95rem;
+/* Typografie */
+.cyber-card h3,
+.science-article h2,
+.gallery-item figcaption {
   font-family: "Courier New", monospace;
-  transition: color 0.3s;
-}
-
-.footer-links a:hover {
-  color: var(--neon-cyan);
-  text-shadow: 0 0 5px var(--neon-cyan);
-}
-
-.main-footer p {
-  color: #4a5568;
-  font-size: 0.85rem;
-}
-
-@media (max-width: 768px) {
-  .logo {
-    font-size: 1.8rem;
-    letter-spacing: 3px;
-  }
-  .main-header {
-    padding: 20px 3%;
-  }
-  .content-section {
-    padding: 50px 3%;
-  }
-}
-/* ==========================================================================
-   9. EXTRA STYLES FOR SCIENCE GRID & CARD EFFECTS
-   ========================================================================== */
-.container {
-  max-width: 1100px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
-
-.science-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-  margin-top: 40px;
-}
-
-.grid-margin-top {
-  margin-top: 40px;
-}
-
-/* --- THE CARD HOVER & MAGNIFY EFFECT --- */
-.science-article {
-  background: rgba(20, 20, 35, 0.7);
-  border: 1px solid var(--neon-cyan);
-  padding: 35px 25px;
-  position: relative;
-  box-shadow: 0 0 15px rgba(0, 243, 255, 0.05);
-  transform: scale(1);
-  z-index: 1;
-  transition:
-    transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.science-article::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
-}
-
-/* 1.2 Lupeneffekt */
-.science-article:hover {
-  transform: scale(1.2) !important;
-  z-index: 20;
-  border-color: var(--neon-pink);
-  box-shadow: 0 20px 40px rgba(255, 0, 85, 0.6);
-}
-
-.science-article h2 {
   color: #fff;
-  font-size: 1.4rem;
+  margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 20px;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  position: relative;
+  z-index: 5;
 }
 
+.cyber-card p,
 .science-article p {
   color: var(--text-gray);
-  font-size: 1rem;
-  margin-bottom: 15px;
+  font-size: 0.88rem;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 5;
 }
 
-.science-main-theory {
-  margin-top: 40px;
-}
-
-.article-full-width {
-  grid-column: 1 / -1;
-}
-
-/* --- BLOCKQUOTE & THEOREM --- */
-.theory-blockquote {
-  background: rgba(0, 243, 255, 0.05);
-  border: 1px dashed var(--neon-cyan);
-  padding: 30px;
-  margin: 50px 0;
-  text-align: center;
-  font-style: italic;
-  font-size: 1.2rem;
-  text-shadow: 0 0 5px rgba(0, 243, 255, 0.3);
-}
-
-.summary-theorem {
-  border-top: 1px dashed var(--neon-cyan);
-  padding-top: 15px;
+/* Ergänzende Elemente */
+.tech-specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
   margin-top: 15px;
-  font-style: italic;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 12px;
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  font-size: 0.8rem;
   color: var(--neon-green);
+  font-family: "Courier New", monospace;
 }
 
-/* --- CHRONO MATRIX DATA TABLE --- */
+.subtitle {
+  color: var(--neon-cyan);
+  font-size: 1rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.theory-blockquote {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #fff;
+  border-left: 4px solid var(--neon-pink);
+  padding-left: 15px;
+  margin: 30px 0;
+  text-align: left;
+}
+
 .table-container {
   overflow-x: auto;
   margin-top: 20px;
@@ -519,130 +509,45 @@ body {
   border-collapse: collapse;
   font-family: "Courier New", monospace;
   font-size: 0.85rem;
-  color: var(--text-light);
+}
+
+.chrono-table th,
+.chrono-table td {
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  padding: 10px;
   text-align: left;
 }
 
 .chrono-table th {
-  padding: 10px;
-  border-bottom: 2px solid var(--neon-pink);
-  background: rgba(255, 0, 85, 0.1);
+  background: rgba(0, 243, 255, 0.1);
+  color: #fff;
 }
 
-.chrono-table td {
-  padding: 10px;
-  border-bottom: 1px solid rgba(0, 243, 255, 0.2);
-}
-
-.status-stable-label {
-  font-weight: bold;
-  color: var(--neon-cyan);
-}
-
+.status-stable-label,
 .status-stable-text {
-  color: var(--neon-cyan);
+  color: var(--neon-green);
 }
 
-.status-unstable-label {
-  font-weight: bold;
-  color: var(--neon-pink);
-}
-
+.status-unstable-label,
 .status-unstable-text {
   color: var(--neon-pink);
 }
 
-.table-desc {
+.tech-fact {
+  font-size: 0.88rem;
   color: var(--text-gray);
 }
-/* ==========================================================================
-   10. SPACESHIP BLUEPRINT SPECIFIC STYLES
-   ========================================================================== */
-.scan-container {
-  border: 2px solid var(--neon-cyan);
-  background: rgba(5, 5, 10, 0.8);
-  padding: 20px;
-  margin-bottom: 50px;
-  box-shadow: 0 0 30px rgba(0, 243, 255, 0.15);
-  position: relative;
-  transform: scale(1);
-  z-index: 1;
-  transition:
-    transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
-}
 
-/* Neuer Hover-Effekt für den oberen Bild-Kasten */
-.scan-container:hover {
-  transform: scale(1.05) !important;
-  z-index: 20;
-  border-color: var(--neon-pink);
-  box-shadow: 0 20px 40px rgba(255, 0, 85, 0.5);
-}
-
-.scan-container::before {
-  content: "BIOMETRIC SCAN: SUBJECT J-01 ... ONLINE";
-  position: absolute;
-  top: -12px;
-  left: 20px;
-  background: var(--dark-void);
-  color: var(--neon-green);
-  padding: 0 10px;
-  font-size: 0.8rem;
-  font-family: "Courier New", monospace;
-}
-
-.blueprint-img {
-  width: 100%;
-  max-height: 500px;
-  object-fit: cover;
-  display: block;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.tech-specs {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 15px;
-  border: 1px solid rgba(0, 243, 255, 0.2);
-  font-size: 0.85rem;
-  color: var(--neon-green);
-  font-family: "Courier New", monospace;
-}
-
-.tech-fact {
+.tech-fact strong {
   color: var(--neon-cyan);
-  font-size: 0.95rem;
-  border-left: 2px solid var(--neon-pink);
-  padding-left: 15px;
-  line-height: 1.7;
+  font-family: "Courier New", monospace;
 }
 
 .center-container {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
-.btn-back {
-  display: inline-block;
-  background: transparent;
-  color: var(--neon-cyan);
-  border: 2px solid var(--neon-cyan);
-  padding: 12px 30px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: all 0.4s ease;
-  text-decoration: none;
-  font-family: "Courier New", monospace;
-}
-
-.btn-back:hover {
-  background-color: var(--neon-cyan);
-  color: var(--dark-void);
-  box-shadow: 0 0 25px var(--neon-cyan);
+.grid-margin-top {
+  margin-top: 30px;
 }
