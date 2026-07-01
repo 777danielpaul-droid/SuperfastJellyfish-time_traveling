@@ -258,7 +258,7 @@ body {
 .science-article:hover,
 .scan-container:hover,
 .gallery-item:hover {
-  transform: scale(1.1) translateZ(0);
+  transform: scale(1.2) translateZ(0);
   z-index: 40;
   border-color: var(--neon-pink);
   box-shadow: 0 15px 35px rgba(255, 0, 85, 0.45);
@@ -322,38 +322,218 @@ body {
 }
 
 /* ==========================================================================
-   6. METADATEN, FORMULARE (TIME) & SPACESHIP FIX
+   6. METADATEN, FORMULARE & SPACESHIP FREESTYLE FIX
    ========================================================================== */
+
 .scan-container {
   display: block;
   margin-bottom: 30px;
+  position: relative;
+  /* KORREKTUR: Mehr Padding oben, damit die grüne Schrift nicht abgeschnitten wird */
+  padding: 35px 20px 20px 20px !important;
+  background: rgba(8, 8, 16, 0.95);
+  border: 1px solid var(--neon-cyan);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+/* Die grüne Hacker-Schrift oben */
 .scan-container::before {
   content: "BIOMETRIC SCAN: SUBJECT J-01 ... ONLINE";
   position: absolute;
-  top: -10px;
+  top: 8px; /* Leicht nach unten versetzt für perfekte Zentrierung */
   left: 15px;
   background: var(--dark-void);
   color: var(--neon-green);
-  padding: 0 8px;
+  padding: 2px 10px;
   font-size: 0.75rem;
   font-family: "Courier New", monospace;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px var(--neon-green);
   z-index: 15;
 }
 
-/* Das Spaceship-Bild (qualle.html) bleibt stabil komplett sichtbar */
+/* Das Raumschiff/Qualle-Bild im Ruhezustand */
 .blueprint-img {
-  width: 100%;
-  height: auto;
-  max-height: 350px;
-  object-fit: contain !important;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(0, 243, 255, 0.2);
-  margin-bottom: 15px;
+  width: calc(100% + 40px) !important;
+  margin-left: -20px !important;
+  margin-top: 5px !important;
+  margin-bottom: 20px !important;
+  height: 320px !important;
+  object-fit: cover !important;
+
+  background: rgba(57, 255, 20, 0.03);
+  border-top: 1px solid rgba(0, 243, 255, 0.2) !important;
+  border-bottom: 1px solid rgba(0, 243, 255, 0.2) !important;
+  border-left: none !important;
+  border-right: none !important;
+
+  filter: hue-rotate(260deg) saturate(1.4) brightness(1.1);
+  opacity: 0.85;
+
+  /* WICHTIG: Das sorgt dafür, dass das Bild beim Rausgehen geschmeidig zurückzoomt */
+  transition:
+    opacity 0.5s ease,
+    filter 0.5s ease,
+    transform 0.8s ease-out !important;
 }
 
-/* Cyberpunk-Formular für time.html */
+/* WENN DIE BOX GEHOVERT WIRD: Startet das langsame Hineinzoomen */
+.scan-container:hover .blueprint-img {
+  opacity: 1;
+  filter: hue-rotate(260deg) saturate(1.8) brightness(1.2) contrast(1.1);
+
+  /* Startet die unendliche, langsame Zoom-Animation */
+  animation: slowZoom 8s ease-in-out forwards;
+}
+
+/* DIE ANIMATION: Von der Normalgröße (1) langsam hoch auf 1.15 wandern */
+@keyframes slowZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+/* Eine animierte Laser-Linie, die beim Hovern durch das Raumschiff jagt */
+.scan-container::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: var(--neon-green);
+  box-shadow: 0 0 15px var(--neon-green);
+  opacity: 0;
+  z-index: 10;
+}
+
+.scan-container:hover::after {
+  animation: scanRadar 2s linear infinite;
+  opacity: 0.7;
+}
+
+/* Die Radar-Animation */
+@keyframes scanRadar {
+  0% {
+    top: 10%;
+  }
+  50% {
+    top: 75%;
+  }
+  100% {
+    top: 10%;
+  }
+}
+
+/* ==========================================================================
+   6. METADATEN, FORMULARE & SPACESHIP LILA-BLAU FREESTYLE
+   ========================================================================== */
+
+.scan-container {
+  display: block;
+  margin-bottom: 30px;
+  position: relative;
+  /* KORREKTUR: Platz oben für die grüne Schrift */
+  padding: 38px 20px 20px 20px !important;
+  background: rgba(8, 8, 16, 0.95);
+  border: 1px solid var(--neon-cyan);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Die grüne Hacker-Schrift oben bleibt lesbar */
+.scan-container::before {
+  content: "BIOMETRIC SCAN: SUBJECT J-01 ... ONLINE";
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  background: var(--dark-void);
+  color: var(--neon-green);
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  font-family: "Courier New", monospace;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px var(--neon-green);
+  z-index: 15;
+}
+
+/* Das Raumschiff/Qualle-Bild: Vollbild & auf Grün umgepolt */
+.blueprint-img {
+  width: calc(100% + 40px) !important; /* Drückt das Bild an die Seitenränder */
+  margin-left: -20px !important; /* Gleicht das Kasten-Padding aus */
+  margin-top: 5px !important;
+  margin-bottom: 20px !important;
+
+  height: 320px !important; /* Satte, große Ansicht */
+  object-fit: cover !important; /* Perfekt ausgefüllt ohne Verzerren */
+
+  background: rgba(57, 255, 20, 0.03); /* Leicht grüner Hintergrund-Schimmer */
+  border-top: 1px solid rgba(0, 243, 255, 0.2) !important;
+  border-bottom: 1px solid rgba(0, 243, 255, 0.2) !important;
+  border-left: none !important;
+  border-right: none !important;
+
+  /* HIER IST DER FARB-TRICK: Verschiebt das Orange exakt in den grünen Bereich */
+  filter: hue-rotate(260deg) saturate(1.4) brightness(1.1);
+  opacity: 0.85;
+  transition: all 0.5s ease;
+}
+
+/* Wenn du die Box hoverst, lassen wir das Grün noch heftiger strahlen */
+.scan-container:hover .blueprint-img {
+  opacity: 1;
+  filter: hue-rotate(260deg) saturate(1.8) brightness(1.2) contrast(1.1);
+  transform: scale(1.02);
+}
+
+.scan-container:hover .blueprint-img {
+  opacity: 1;
+  /* Lässt die echten Farben des Bildes strahlen, erhöht nur leicht den Kontrast */
+  filter: contrast(1.1) brightness(1.1);
+  transform: scale(1.02);
+}
+
+/* Die animierte Laser-Linie jagt jetzt in glühendem Neon-Lila durchs Schiff */
+.scan-container::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #bd00ff;
+  box-shadow:
+    0 0 15px #bd00ff,
+    0 0 30px #00e1ff; /* Lila Kern mit blauem Schein */
+  opacity: 0;
+  z-index: 10;
+}
+
+.scan-container:hover::after {
+  animation: scanRadar lilaBlauScan 2.5s linear infinite;
+  opacity: 0.8;
+}
+
+/* Flüssige Radar-Animation von oben nach unten */
+@keyframes lilaBlauScan {
+  0% {
+    top: 12%;
+  }
+  50% {
+    top: 82%;
+  }
+  100% {
+    top: 12%;
+  }
+}
+
+/* ==========================================================================
+   RESTLICHE FORMULAR-STYLES (UNVERÄNDERT)
+   ========================================================================== */
 .calibration-form {
   background: rgba(12, 12, 25, 0.85);
   border: 1px solid var(--neon-cyan);
@@ -383,10 +563,8 @@ body {
 .calibration-form .input-group {
   margin-bottom: 20px;
   width: 100%;
-}
-
-.calibration-form .input-group:last-child {
-  margin-bottom: 0;
+  position: relative;
+  z-index: 50;
 }
 
 .calibration-form label,
@@ -442,112 +620,4 @@ body {
   accent-color: var(--neon-cyan);
   width: 18px;
   height: 18px;
-}
-
-/* Typografie */
-.cyber-card h3,
-.science-article h2,
-.gallery-item figcaption {
-  font-family: "Courier New", monospace;
-  color: #fff;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 1.15rem;
-  line-height: 1.3;
-  position: relative;
-  z-index: 5;
-}
-
-.cyber-card p,
-.science-article p {
-  color: var(--text-gray);
-  font-size: 0.88rem;
-  margin-bottom: 8px;
-  position: relative;
-  z-index: 5;
-}
-
-/* Ergänzende Elemente */
-.tech-specs {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 10px;
-  margin-top: 15px;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 12px;
-  border: 1px solid rgba(0, 243, 255, 0.2);
-  font-size: 0.8rem;
-  color: var(--neon-green);
-  font-family: "Courier New", monospace;
-}
-
-.subtitle {
-  color: var(--neon-cyan);
-  font-size: 1rem;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.theory-blockquote {
-  font-style: italic;
-  font-size: 1.1rem;
-  color: #fff;
-  border-left: 4px solid var(--neon-pink);
-  padding-left: 15px;
-  margin: 30px 0;
-  text-align: left;
-}
-
-.table-container {
-  overflow-x: auto;
-  margin-top: 20px;
-}
-
-.chrono-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: "Courier New", monospace;
-  font-size: 0.85rem;
-}
-
-.chrono-table th,
-.chrono-table td {
-  border: 1px solid rgba(0, 243, 255, 0.2);
-  padding: 10px;
-  text-align: left;
-}
-
-.chrono-table th {
-  background: rgba(0, 243, 255, 0.1);
-  color: #fff;
-}
-
-.status-stable-label,
-.status-stable-text {
-  color: var(--neon-green);
-}
-
-.status-unstable-label,
-.status-unstable-text {
-  color: var(--neon-pink);
-}
-
-.tech-fact {
-  font-size: 0.88rem;
-  color: var(--text-gray);
-}
-
-.tech-fact strong {
-  color: var(--neon-cyan);
-  font-family: "Courier New", monospace;
-}
-
-.center-container {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.grid-margin-top {
-  margin-top: 30px;
 }
