@@ -9,6 +9,42 @@
     />
     <title>Superfast Jellyfish - Chrono Vector Calibration</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Der gesamte Formular-Container bekommt eine feste, stabile Basis */
+      .calibration-form {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      /* Die Eingabegruppen (Label + Input/Select) absolut stabilisieren */
+      .calibration-form .input-group {
+        width: 100%;
+        box-sizing: border-box;
+        transition: transform 0.2s ease-in-out;
+        min-width: 100%;
+      }
+
+      /* Normaler Hover-Effekt mit der Maus */
+      .calibration-form .input-group:hover {
+        transform: scale(1.02);
+      }
+
+      /* KLARE STATE MACHINE:
+         Sobald ein Element (egal ob Select oder Checkbox) innerhalb der Gruppe 
+         fokussiert wird ODER das Dropdown offen ist, bleibt der Kasten vergrößert.
+         Das funktioniert bei echten <select>-Elementen in jedem Browser zu 100% fehlerfrei! */
+      .calibration-form .input-group:focus-within {
+        transform: scale(1.02) !important;
+      }
+
+      /* Einheitliches Design für Eingabefelder und Dropdowns */
+      #target-epoch,
+      #puls-frequency {
+        width: 100%;
+        box-sizing: border-box;
+        display: block;
+      }
+    </style>
   </head>
   <body>
     <header class="main-header">
@@ -35,12 +71,32 @@
           <legend>1. Ziel-Koordinaten-Bestimmung</legend>
           <div class="input-group">
             <label for="target-epoch">Epoche / Temporal-Vektor</label>
-            <input
-              type="text"
-              id="target-epoch"
-              placeholder="z.B. JERUSALEM_33_AD"
-              required
-            />
+            <select id="target-epoch" required>
+              <option value="" disabled selected hidden>
+                Wählen Sie einen Vektor...
+              </option>
+              <option value="JERUSALEM_33_AD">
+                Vektor 01: Das Jerusalem-Signal (33 n. Chr.)
+              </option>
+              <option value="ORONTH_1967_BC">
+                Vektor 02: Das Oronth-Ereignis (1967 v. Chr.)
+              </option>
+              <option value="ELARIA_3967_BC">
+                Vektor 03: Die Elaria-Zivilisation (3967 v. Chr.)
+              </option>
+              <option value="THERON_5967_BC">
+                Vektor 04: Theron-Refugium (5967 v. Chr.)
+              </option>
+              <option value="BOREAS_7967_BC">
+                Vektor 05: Boreas-Konflikt (7967 v. Chr.)
+              </option>
+              <option value="SOL_INVICTUS_9967_BC">
+                Vektor 06: Sol-Invictus-Kult (9967 v. Chr.)
+              </option>
+              <option value="KADESH_11967_BC">
+                Vektor 07: Kadesh-Abkommen (11967 v. Chr.)
+              </option>
+            </select>
           </div>
         </fieldset>
 
